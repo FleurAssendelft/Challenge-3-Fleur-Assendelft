@@ -9,10 +9,37 @@ h1 {
 	text-align: center;
 }
 
+
+
+/* ----------------------------------------------
+menu 
+----------------------------------------------*/
+
+.menu{
+	text-align: center;
+}
+button{
+	background-color: #acdfdd;
+	border-radius: 5px;
+	border-style: none;
+	color: white;
+	font-size: 18px;
+}
+
+button:hover{
+	color: black;
+}
+
+button:focus{
+	background-color: #e57668;
+}
+
+/* kaart */
+
 #map {
 	margin: 0 auto;
-	width: 80vw;
-	height: 80vh;
+	width: 90vw;
+	height: 90vh;
 	color: #111;
 	/*box-shadow: 15px 15px 50px 15px grey*/;
 }
@@ -34,4 +61,9 @@ h1 {
 }
 
 @media only screen and (min-width: 1025px) {
+
+	#map {
+	width: 50vw;
+	height: 50vh;
+}
 }
