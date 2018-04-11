@@ -2,17 +2,24 @@
 // on page load show map
 window.onload = function() {
 	initMap();
-	getAPIdataOrlando()
+	getAPIdataOrlando();
 	
 };
 document.getElementById("california").onclick = function(){
 	getAPIdataOrlando('santa maria, us');
+	document.getElementById('stad').innerHTML = 'Santa Maria'
+	date();
+
 };
 document.getElementById("tenessee").onclick = function(){
 	getAPIdataOrlando('decatur, us');
+	document.getElementById('stad').innerHTML = 'Decatur'
+	date();
 };
 document.getElementById("florida").onclick = function(){
 	getAPIdataOrlando('wilson, us');
+	document.getElementById('stad').innerHTML = 'Wilson'
+	date();
 };
 
 
@@ -23,7 +30,6 @@ document.getElementById("florida").onclick = function(){
 function getAPIdataOrlando(stad) {
 
 	// construct request
-	// var request = 'http://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=the%20Hague,nl';
 	var url = "http://api.openweathermap.org/data/2.5/weather";
 	var apiKey ="b0c8dafa512a0134e90df6ece3c2b7a2";
 	var city = stad;
@@ -46,9 +52,15 @@ function getAPIdataOrlando(stad) {
 		var temperatuur = Math.round((response.main.temp - 273.25) *10) / 10;
 		var mintemp = Math.round((response.main.temp_min - 273.25) *10) / 10;
 		var maxtemp = Math.round((response.main.temp_max - 273.25) *10) / 10;
-		document.getElementById('weather').innerHTML = 	"De huidige temperatuur is " + temperatuur + " &deg;C" +
-														"<br>De minimum temperatuur is " + mintemp + " &deg;C" +
-														"<br>De minimum temperatuur is " + maxtemp + " &deg;C" ;
+		var visibility = response.visibility;
+		var speed = response.wind.speed;
+		var weather = response.weather.description;
+		document.getElementById('graden').innerHTML = 	temperatuur + " &deg;C" ;
+		document.getElementById('weather').innerHTML = "<br>Minimum temperatuur " + mintemp + " &deg;C" +
+														"<br>Maximum temperatuur "  + maxtemp + " &deg;C" +
+														"<br>Het zicht is " + visibility + "km" +
+														"<br>windsnelheid " + speed +
+														"<br>weer" + weather  ;
 
 	})
 	// catch error
@@ -57,6 +69,37 @@ function getAPIdataOrlando(stad) {
 	});
 }
 
+//tijd
+function date(){
+ var today = new Date();
+ var date = today.getDate();
+  var weekday = new Array(7);
+        weekday[0] = "Zondag";
+        weekday[1] = "Maandag";
+        weekday[2] = "Dinsdag";
+        weekday[3] = "Woensdag";
+        weekday[4] = "Donderdag";
+        weekday[5] = "Vrijdag";
+        weekday[6] = "Zaterdag";
+
+        var month = new Array(11);
+        month[0] = "januari";
+        month[1] = "februari";
+        month[2] = "maart";
+        month[3] = "april";
+        month[4] = "mei";
+        month[5] = "juni";
+        month[6] = "juli";
+        month[7] = "augustus";
+        month[8] = "September";
+        month[9] = "oktober";
+        month[10] = "november";
+        month[11] = "december";
+ 
+ var dag = weekday[today.getDay()];
+ var maand = month[today.getMonth()];
+ document.getElementById("day").innerHTML =  dag + ", " + date + maand ;
+};
 
 
 
@@ -352,16 +395,6 @@ function initMap() {
 		title: 'Cape Canaveral',
 	});
 
-		//create marker for Florida
-	//var hhsMarker = new google.maps.Marker({
-		//position: {
-			//lat: 27.664827, 
-			//lng: -81.515754,
-		//},
-		//map: myMap,
-		//title: 'Florida',
-	//});
-
 
 		//landingspot United Launchh Alliance
 	var hhsMarker = new google.maps.Marker({
@@ -371,7 +404,7 @@ function initMap() {
 		},
 		map: myMap,
 		title: 'United Launch Alliance',
-		//icon: 'afbeelding/landing_facility.jpg',
+		icon: 'afbeelding/raket.png',
 		//scaledSize: new google.maps.Size('20px', '20px'),
 		animation: google.maps.Animation.BOUNCE,
 	});
@@ -384,6 +417,7 @@ function initMap() {
 		},
 		map: myMap,
 		title: 'SpaceX landing Zone 1',
+		icon: 'afbeelding/raket.png',
 		animation: google.maps.Animation.BOUNCE,
 	});
 
@@ -395,6 +429,7 @@ function initMap() {
 		},
 		map: myMap,
 		title: 'Vandenberg AirFoirce Base',
+		icon: 'afbeelding/raket.png',
 		animation: google.maps.Animation.BOUNCE,
 	});
 }

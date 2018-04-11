@@ -3,11 +3,35 @@ body {
 	font-family: avenir;
 	color: black;
 	background-color: white;
+
 }
 
+
+/* ----------------------------------------------
+tekst
+----------------------------------------------*/
 h1 {
 	text-align: center;
 }
+#stad{
+	font-size: 45px;
+	padding-top: 2%;
+	text-align: center;
+}
+
+#graden{
+	font-size: 45px;
+	text-align: center;
+}
+#weather{
+	font-size: 22px;
+	padding-right: 5%;
+	padding-left: 5%;
+	padding-bottom: 0px;
+	text-align: center;
+}
+
+
 
 
 
@@ -24,6 +48,8 @@ button{
 	border-style: none;
 	color: white;
 	font-size: 18px;
+	padding: 2%;
+	margin-right: 2%;
 }
 
 button:hover{
@@ -34,7 +60,9 @@ button:focus{
 	background-color: #e57668;
 }
 
-/* kaart */
+/* ----------------------------------------------
+kaart
+----------------------------------------------*/
 
 #map {
 	margin: 0 auto;
@@ -63,7 +91,7 @@ button:focus{
 @media only screen and (min-width: 1025px) {
 
 	#map {
-	width: 50vw;
-	height: 50vh;
+	width: 70vw;
+	height: 100vh;
 }
 }
