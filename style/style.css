@@ -6,6 +6,16 @@ body {
 
 }
 
+.container{
+	display: grid;
+	grid-template-areas:
+	"zoek"
+	"menu"
+	"weer"
+	"foto"
+	"kaart";
+}
+
 
 /* ----------------------------------------------
 tekst
@@ -19,16 +29,30 @@ h1 {
 	text-align: center;
 }
 
+#soort{
+	text-align: center;
+}
+
 #graden{
-	font-size: 45px;
+	font-size: 50px;
+	text-align: center;
+	padding-top: 3%;
+}
+
+#day{
 	text-align: center;
 }
 #weather{
 	font-size: 22px;
 	padding-right: 5%;
 	padding-left: 5%;
+	padding-top: 5%;
 	padding-bottom: 0px;
 	text-align: center;
+}
+
+#landingsplaats{
+	width: 100%;
 }
 
 

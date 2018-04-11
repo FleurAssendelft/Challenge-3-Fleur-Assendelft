@@ -7,18 +7,23 @@ window.onload = function() {
 };
 document.getElementById("california").onclick = function(){
 	getAPIdataOrlando('santa maria, us');
-	document.getElementById('stad').innerHTML = 'Santa Maria'
+	document.getElementById('stad').innerHTML = 'Santa Maria';
+	document.getElementById('landingsplaats').src = "../Challenge-3-Fleur-Assendelft/afbeelding/2.jpg";
 	date();
 
 };
 document.getElementById("tenessee").onclick = function(){
 	getAPIdataOrlando('decatur, us');
-	document.getElementById('stad').innerHTML = 'Decatur'
+	document.getElementById('stad').innerHTML = 'Decatur';
+	document.getElementById('landingsplaats').src = "../Challenge-3-Fleur-Assendelft/afbeelding/3.jpg";
+
 	date();
 };
 document.getElementById("florida").onclick = function(){
 	getAPIdataOrlando('wilson, us');
-	document.getElementById('stad').innerHTML = 'Wilson'
+	document.getElementById('stad').innerHTML = 'Wilson';
+	document.getElementById('landingsplaats').src = "../Challenge-3-Fleur-Assendelft/afbeelding/landing_facility.jpg";
+
 	date();
 };
 
@@ -49,18 +54,59 @@ function getAPIdataOrlando(stad) {
 	.then(function(response) {
 		// show full JSON object
 		console.log(response);
-		var temperatuur = Math.round((response.main.temp - 273.25) *10) / 10;
+		var temperatuur = Math.round(response.main.temp - 273.25) ;
 		var mintemp = Math.round((response.main.temp_min - 273.25) *10) / 10;
-		var maxtemp = Math.round((response.main.temp_max - 273.25) *10) / 10;
+		var maxtemp = Math.round(response.main.temp_max - 273.25) ;
 		var visibility = response.visibility;
 		var speed = response.wind.speed;
-		var weather = response.weather.description;
-		document.getElementById('graden').innerHTML = 	temperatuur + " &deg;C" ;
-		document.getElementById('weather').innerHTML = "<br>Minimum temperatuur " + mintemp + " &deg;C" +
-														"<br>Maximum temperatuur "  + maxtemp + " &deg;C" +
-														"<br>Het zicht is " + visibility + "km" +
-														"<br>windsnelheid " + speed +
-														"<br>weer" + weather  ;
+		var weather = response.weather[0].description;
+		var bericht = 'geen informatie';
+
+		if( weather == 'clear sky'){
+			weather = 'zonnig';
+			bericht = 'zonnige dag'
+		}
+		if( weather == 'few clouds'){
+			weather = 'beetje bewolkt';
+			bericht = 'een paar wolken'
+		}
+		if( weather == 'scattered clouds'){
+			weather = 'verstrooide wolken';
+			bericht = 'bewolking'
+		}
+		if( weather == 'broken clouds'){
+			weather = 'gebroken lucht';
+			bericht = 'bewolking met een beetje zon'
+		}
+		if( weather == 'shower rain'){
+			weather = 'regenachtig';
+			bericht = 'veel regenbuien'
+		}
+		if( weather == 'rain'){
+			weather = 'regenachtig';
+			bericht = 'veel regen'
+		}
+		if( weather == 'thunderstorm'){
+			weather = 'onweer';
+			bericht = 'onweersbuien'
+		}
+		if( weather == 'snow'){
+			weather = 'sneeuw';
+			bericht = 'sneeuwstormen'
+		}
+		if( weather == 'fog' || weather=='mist'){
+			weather = 'mistig';
+			bericht = 'slecht zicht'
+		}
+		
+
+		document.getElementById('graden').innerHTML = 	temperatuur + "&deg;" ;
+		document.getElementById('soort').innerHTML = 	weather  ;
+		document.getElementById('weather').innerHTML = "Vandaag: " + bericht + ". Het is nu " + 
+														temperatuur + " &deg;C en het wordt maximaal " 
+														+ maxtemp + "&deg;C" + ". Met een windsnelheid van " +
+														speed + " km/uur en een zicht van " + visibility  + " km" ;
+		
 
 	})
 	// catch error
@@ -98,7 +144,7 @@ function date(){
  
  var dag = weekday[today.getDay()];
  var maand = month[today.getMonth()];
- document.getElementById("day").innerHTML =  dag + ", " + date + maand ;
+ document.getElementById("day").innerHTML =  dag + ", " + date + " " + maand ;
 };
 
 
@@ -396,7 +442,7 @@ function initMap() {
 	});
 
 
-		//landingspot United Launchh Alliance
+		//landingspot United Launchh Alliance tenessee
 	var hhsMarker = new google.maps.Marker({
 		position: {
 			lat: 34.632888, 
@@ -409,7 +455,7 @@ function initMap() {
 		animation: google.maps.Animation.BOUNCE,
 	});
 
-		//landingspot SpaceX landing Zone 1
+		//landingspot SpaceX landing Zone 1 florida
 	var hhsMarker = new google.maps.Marker({
 		position: {
 			lat: 28.488573, 
@@ -421,7 +467,7 @@ function initMap() {
 		animation: google.maps.Animation.BOUNCE,
 	});
 
-		//landingspot Vandenberg AirFoirce Base
+		//landingspot Vandenberg AirFoirce Base californie
 	var hhsMarker = new google.maps.Marker({
 		position: {
 			lat: 34.755858, 
