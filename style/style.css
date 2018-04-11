@@ -1,9 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 body {
 	font-family: avenir;
 	color: black;
 	background-color: white;
 
+}
+
+.zoek{
+	grid-area: zoek;
+}
+.menu{
+	grid-area: menu;
+	
+}
+.weer{
+	grid-area: weer;
+}
+.foto{
+	grid-area: foto;
+}
+.kaart{
+	grid-area: kaart;
 }
 
 .container{
@@ -22,28 +42,32 @@ tekst
 ----------------------------------------------*/
 h1 {
 	text-align: center;
+	font-family: 'Open Sans', sans-serif;
 }
 #stad{
-	font-size: 45px;
+	font-size: 40px;
 	padding-top: 2%;
 	text-align: center;
+	font-family: 'Open Sans', sans-serif;
 }
 
 #soort{
 	text-align: center;
+	font-family: 'Roboto mono', sans-serif;
 }
 
 #graden{
 	font-size: 50px;
 	text-align: center;
 	padding-top: 3%;
+	color: #e57668;
 }
 
 #day{
 	text-align: center;
 }
 #weather{
-	font-size: 22px;
+	font-size: 18px;
 	padding-right: 5%;
 	padding-left: 5%;
 	padding-top: 5%;
@@ -67,6 +91,7 @@ menu
 	text-align: center;
 }
 button{
+	font-family: 'Open Sans', sans-serif;
 	background-color: #acdfdd;
 	border-radius: 5px;
 	border-style: none;
@@ -93,7 +118,6 @@ kaart
 	width: 90vw;
 	height: 90vh;
 	color: #111;
-	/*box-shadow: 15px 15px 50px 15px grey*/;
 }
 
 #map img {
@@ -107,15 +131,61 @@ kaart
 
 
 @media only screen and (min-width: 500px) {
+	/*.container{
+	display: grid;
+	grid-template-areas:
+	"zoek zoek"
+	"menu menu"
+	"weer foto"
+	"kaart kaart";}*/
 }
 
 @media only screen and (min-width: 725px) {
+	.container{
+	display: grid;
+	grid-template-areas:
+	"zoek zoek"
+	"menu menu"
+	"weer kaart"
+	"foto kaart";
+	}
+	
+	#map {
+		width: 65vw;
+		height: 90vh;
+		padding-left: 5%;
+	}
+	.weer{
+		padding-top: 30%;
+	}
+	#weather{
+		font-size: 18px;
+	}
+	button{
+		padding-left: 1%;
+		padding-right: 1%;
+		margin-right: 2%;
+	}
 }
 
 @media only screen and (min-width: 1025px) {
-
+	.container{
+		display: grid;
+		grid-template-areas:
+		"zoek kaart"
+		"menu kaart"
+		"weer kaart"
+		"foto kaart";
+	}
 	#map {
-	width: 70vw;
-	height: 100vh;
-}
+		width: 58vw;
+		height: 87vh;
+		padding-left: 10%;
+	}	
+	.menu{
+		padding-bottom: 0px;
+	}
+	.weer{
+		padding-top: 2%;
+	}
 }

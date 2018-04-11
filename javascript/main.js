@@ -7,6 +7,7 @@ window.onload = function() {
 };
 document.getElementById("california").onclick = function(){
 	getAPIdataOrlando('santa maria, us');
+	document.getElementById('plek').innerHTML = '<h1>Landingsplaats</h1>';
 	document.getElementById('stad').innerHTML = 'Santa Maria';
 	document.getElementById('landingsplaats').src = "../Challenge-3-Fleur-Assendelft/afbeelding/2.jpg";
 	date();
